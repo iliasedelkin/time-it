@@ -1,0 +1,65 @@
+"app_name" = "TimeIt";
+
+"start_button" = "Start";
+"pause_button" = "Pause";
+"resume_button" = "Resume";
+"finish_button" = "Finish";
+"add_time_button" = "Add Time";
+"take_time_button" = "Take Time";
+"add_button" = "Add";
+"cancel_button" = "Cancel";
+"preview_button" = "Preview";
+"ok_button" = "OK";
+
+"setup_duration_placeholder_format" = "%d";
+"setup_minutes_label" = "minutes";
+"setup_task_name_placeholder" = "What are you working on?";
+"setup_validation_warning" = "Enter a duration and task name to start.";
+
+"expired_title" = "Time's up!";
+
+"add_time_placeholder" = "Minutes";
+"add_time_validation_warning" = "Enter minutes greater than 0.";
+
+"history_title" = "History";
+"history_filter_label" = "Filter";
+"history_filter_today" = "Today";
+"history_filter_week" = "This Week";
+"history_filter_month" = "This Month";
+"history_filter_custom" = "Custom Range";
+"history_start_date_label" = "Start";
+"history_end_date_label" = "End";
+"history_empty_state" = "No tasks in this period.";
+"history_primary_format" = "%@ – %@  %@";
+"history_secondary_format" = "Planned: %dm  •  Actual: %dm %ds";
+"history_stopwatch_suffix" = " ⏱";
+
+"export_button" = "Export";
+"export_dialog_title" = "Export";
+"export_txt_option" = "Export as .txt";
+"export_csv_option" = "Export as .csv";
+"export_error_title" = "Export Failed";
+"export_encoding_error" = "Could not encode export data.";
+"export_write_error" = "Could not write the selected file.";
+"export_txt_header_format" = "Tasks %@:";
+"export_txt_line_format" = "%@–%@ %@";
+
+"settings_title" = "Settings";
+"settings_sound_section" = "Sound";
+"settings_play_sound_toggle" = "Play sound when timer expires";
+"settings_alert_sound_picker" = "Alert sound";
+"settings_repeat_sound_toggle" = "Repeat sound until action";
+"settings_repeat_interval_format" = "Repeat interval: %d sec";
+"settings_timer_section" = "Timer";
+"settings_default_duration_format" = "Default duration: %d min";
+"settings_appearance_section" = "Appearance";
+"settings_theme_picker" = "Theme";
+"settings_theme_auto" = "Auto";
+"settings_theme_light" = "Light";
+"settings_theme_dark" = "Dark";
+"settings_about_section" = "About";
+"settings_about_name" = "TimeIt";
+"settings_version_format" = "Version: %@";
+"settings_build_format" = "Build: %@";
+
+"pause_indicator" = "⏸";
