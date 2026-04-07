@@ -44,12 +44,14 @@ struct RunningView: View {
                             timerViewModel.pauseCountdown()
                         }
                     }
+                    .keyboardShortcut(.space, modifiers: [])
                     .adaptiveActionButtonStyle()
                     .frame(maxWidth: .infinity)
 
                     Button(L10n.finishButton) {
                         timerViewModel.finishCurrentTask()
                     }
+                    .keyboardShortcut(.return, modifiers: [])
                     .adaptiveActionButtonStyle(prominent: true)
                     .frame(maxWidth: .infinity)
 

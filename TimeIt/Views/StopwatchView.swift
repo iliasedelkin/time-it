@@ -26,12 +26,14 @@ struct StopwatchView: View {
                         timerViewModel.pauseStopwatch()
                     }
                 }
+                .keyboardShortcut(.space, modifiers: [])
                 .adaptiveActionButtonStyle()
                 .frame(maxWidth: .infinity)
 
                 Button(L10n.finishButton) {
                     timerViewModel.finishCurrentTask()
                 }
+                .keyboardShortcut(.return, modifiers: [])
                 .adaptiveActionButtonStyle(prominent: true)
                 .frame(maxWidth: .infinity)
             }

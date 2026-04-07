@@ -1,6 +1,8 @@
 import SwiftUI
 
 struct SettingsView: View {
+    @Environment(\.dismiss) private var dismiss
+
     @AppStorage("playSoundOnExpiry") private var playSoundOnExpiry = true
     @AppStorage("selectedSoundName") private var selectedSoundName = "Glass"
     @AppStorage("repeatSoundOnExpiry") private var repeatSoundOnExpiry = false
@@ -60,6 +62,21 @@ struct SettingsView: View {
             }
         }
         .navigationTitle(L10n.settingsTitle)
+        .toolbar {
+            ToolbarItem(placement: .cancellationAction) {
+                Button {
+                    dismiss()
+                } label: {
+                    Image(systemName: "xmark.circle.fill")
+                }
+                .help(L10n.cancelButton)
+            }
+
+            ToolbarItem(placement: .principal) {
+                Text(L10n.settingsTitle)
+                    .font(.headline)
+            }
+        }
         .onAppear {
             if !sounds.contains(selectedSoundName) {
                 selectedSoundName = sounds.first ?? "Glass"

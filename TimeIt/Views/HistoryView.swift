@@ -2,6 +2,7 @@ import SwiftUI
 import SwiftData
 
 struct HistoryView: View {
+    @Environment(\.dismiss) private var dismiss
     @Environment(\.modelContext) private var modelContext
 
     @Query(sort: \TaskRecord.startedAt, order: .reverse)
@@ -74,6 +75,20 @@ struct HistoryView: View {
         .padding(16)
         .navigationTitle(L10n.historyTitle)
         .toolbar {
+            ToolbarItem(placement: .cancellationAction) {
+                Button {
+                    dismiss()
+                } label: {
+                    Image(systemName: "xmark.circle.fill")
+                }
+                .help(L10n.cancelButton)
+            }
+
+            ToolbarItem(placement: .principal) {
+                Text(L10n.historyTitle)
+                    .font(.headline)
+            }
+
             ToolbarItem(placement: .automatic) {
                 Button(L10n.exportButton) {
                     showExportOptions = true

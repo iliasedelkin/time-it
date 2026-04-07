@@ -4,6 +4,12 @@ import SwiftData
 
 @MainActor
 final class AppDelegate: NSObject, NSApplicationDelegate, NSWindowDelegate {
+    private enum PanelLayout {
+        // Tune the main window sizes here.
+        static let defaultSize = NSSize(width: 320, height: 420)
+        static let minimumSize = NSSize(width: 280, height: 340)
+    }
+
     private var statusItem: NSStatusItem?
     private var panel: NSPanel?
     private var menuBarObserver: NSObjectProtocol?
@@ -43,6 +49,17 @@ final class AppDelegate: NSObject, NSApplicationDelegate, NSWindowDelegate {
         return false
     }
 
+    func windowWillResize(_ sender: NSWindow, to frameSize: NSSize) -> NSSize {
+        guard sender === panel else {
+            return frameSize
+        }
+
+        return NSSize(
+            width: max(frameSize.width, PanelLayout.minimumSize.width),
+            height: max(frameSize.height, PanelLayout.minimumSize.height)
+        )
+    }
+
     private func setupInterfaceIfNeeded() {
         guard !didSetupInterface, didFinishLaunching, let modelContainer, let timerViewModel else {
             return
@@ -66,7 +83,7 @@ final class AppDelegate: NSObject, NSApplicationDelegate, NSWindowDelegate {
 
     private func setupPanel(modelContainer: ModelContainer, timerViewModel: TimerViewModel) {
         let panel = NSPanel(
-            contentRect: NSRect(x: 0, y: 0, width: 320, height: 420),
+            contentRect: NSRect(origin: .zero, size: PanelLayout.defaultSize),
             styleMask: [.titled, .closable, .resizable, .fullSizeContentView],
             backing: .buffered,
             defer: false
@@ -76,7 +93,9 @@ final class AppDelegate: NSObject, NSApplicationDelegate, NSWindowDelegate {
         panel.collectionBehavior = [.canJoinAllSpaces, .stationary]
         panel.isMovableByWindowBackground = true
         panel.hidesOnDeactivate = false
-        panel.minSize = NSSize(width: 280, height: 340)
+        panel.minSize = PanelLayout.minimumSize
+        panel.contentMinSize = PanelLayout.minimumSize
+        panel.setContentSize(PanelLayout.defaultSize)
         panel.isReleasedWhenClosed = false
         panel.delegate = self
 
